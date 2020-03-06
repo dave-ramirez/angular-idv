@@ -1,0 +1,10 @@
+{
+  "/apiSplunk/*": {
+    "target": "https://10.56.156.65:8088",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/apiSplunk" : ""
+    }
+  }
+}

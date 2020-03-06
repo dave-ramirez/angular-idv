@@ -1,0 +1,21 @@
+<voxel-header
+  id="mainHeader"
+  [title]="title"
+  headerAccessibility="voltar"
+  [fixed]="'true'"
+  [icons]="icons"
+  [displayBackButton]="showBackBtn"
+  (headerPrimaryClick)="filter()">
+</voxel-header>
+
+<main class="voxel-bg-default voxel-main voxel-ph-m">
+  <router-outlet></router-outlet>
+
+  <voxel-go-to
+    *ngIf="links$ | async as links"
+    [heading]="2"
+    title="ir para documentação"
+    [links]="links"
+    (goToClick)="navigate($event)">
+  </voxel-go-to>
+</main>

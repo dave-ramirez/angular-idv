@@ -1,0 +1,16 @@
+{
+  // See http://go.microsoft.com/fwlink/?LinkId=827846
+  // for the documentation about the extensions.json format
+  "recommendations": [
+      "angular.ng-template",
+      "msjsdiag.debugger-for-chrome",
+      "joelday.docthis",
+      "waderyan.gitblame",
+      "stringham.move-ts",
+      "christian-kohler.path-intellisense",
+      "eg2.tslint",
+      "rbbit.typescript-hero",
+      "pflannery.vscode-versionlens",
+      "formulahendry.auto-close-tag"
+  ]
+}

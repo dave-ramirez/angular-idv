@@ -1,0 +1,10 @@
+{
+  "tslint.autoFixOnSave": true,
+  "typescriptHero.imports.organizeOnSave": true,
+
+  "html.format.wrapAttributes": "auto",
+  "html.format.wrapLineLength": 0,
+  "html.format.unformatted": "a, abbr, acronym, b, bdo, big, br, ...",
+
+  "auto-rename-tag.activationOnLanguage": ["html", "xml"]
+}
