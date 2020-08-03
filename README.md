@@ -43,8 +43,11 @@ Para pasarle los parametros al routerRequest creamos una clase `Signature` que i
  ``` 
 
  `method:NativeRouter = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE'` es un Type de clase `VoxelNativeCommunicationService`
+
  `op` es el identificador del servicio a llamar, en este caso se utiliza el `target` y no la op propiamente.
+
  `body` es el cuerpo de la peticion. Opcional en algunos casos, dependiendo del servicio.
+ 
  `query` son los parametros de la peticion. Opcional en algunos casos, dependiendo del servicio.
 
  ## Paso 2:
