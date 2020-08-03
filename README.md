@@ -24,39 +24,44 @@ Se debe editar el archivo y se debe agregar los siguientes registry´s y desacti
 5. Terminada la instalacion correspondiente volver a agregar las dependencias `Voxel` removidas en el paso 3.
 6. Una vez terminado de agregar las dependencias `Voxel` ejecutar el comando `package.json` con el registry apuntando a `https://depdes.artifactory.prod.cloud.ihf/artifactory/api/npm/npm-devel`.
 
-## Mock de solicitudes de enrutador
+## Metodo para llamada a servicios
 
-Este repositorio ya tiene una estructura simulada básica para solicitudes al enrutador.
+## Paso 1: 
+Las peticiones `routerRequest` de la clase `VoxelNativeCommunicationService` espera una interface del tipo `INativeRequest`.
+Para pasarle los parametros al routerRequest creamos una clase `Signature` que implementa la interface necesaria. Ej:
+```ts
+    export class Signature implements INativeRequest {
+  
+    method: NativeRouterMethod = 'POST';
+  
+    op = 'target_from_OP';
+  
+    body = { };
 
-En el archivo `src/router-mock.ts`, tenemos un archivo con una estructura clave-valor con una estructura *response* para cada *OP* registrado. Para personalizar la estructura simulada, solo edite este archivo con los retornos esperados, como se muestra a continuación, y reinicie el servidor de desarrollo.
+    query = [ ];
+  }
+ ``` 
 
+ `method:NativeRouter = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE'` es un Type de clase `VoxelNativeCommunicationService`
+ `op` es el identificador del servicio a llamar, en este caso se utiliza el `target` y no la op propiamente.
+ `body` es el cuerpo de la peticion. Opcional en algunos casos, dependiendo del servicio.
+ `query` son los parametros de la peticion. Opcional en algunos casos, dependiendo del servicio.
+
+ ## Paso 2:
+ En el servicio `VoxelNativeCommunicatorService` creamos un metodo que contenga como parametro la clase anteriormente creada `Signature` que tiene como interface `INativeRequest`:
+ ```ts
+   metodo(params: INativeRequest, _?: HttpHeaders): Observable<any> {
+      return this.voxelNative.routerRequest(params);
+    }
+ ``` 
+ ## Paso 3:
+ Desde el componente debemos invocar al metodo del `VoxelNativeCommunicatorService`, teniendo en cuenta que el metodo del servicio es un Observable. Para imprimir en el componente debemos de suscribirnos a ese evento. Ej:
 
 ```ts
-export const mockData = [
-  {
-    request: {
-      op: 'INITIAL_OP',
-      method: 'POST',
-    },
-    response: {
-      data: {...},
-      links: [
-        {
-          rel: 'next',
-          href: 'PROXIMA_OP'
-        }
-      ]
-    },
-  },
-  {
-    request: {
-      op: 'PROXIMA_OP',
-      method: 'POST',
-    },
-    response: {...},
-  }
-]
-```
+    this.voxelNative.metodo(new Signature()).subscribe(res => {
+      this.example = res;
+    });
+ ``` 
 
 ## Comandos principales para el desarrollo
 
