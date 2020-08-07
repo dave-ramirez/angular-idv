@@ -15,8 +15,7 @@ export class CommunicatorService implements ICommunicatorService {
     private voxelRouter: VoxelRouterCommunicatorService,
     private voxelNative: VoxelNativeCommunicatorService
   ) {
-    console.log('asd')
-    this.strategy = (window as any).native ? voxelNative : this.voxelRouter;
+    this.strategy = (window as any).native ? voxelNative : this.voxelRouter; // 
     console.log('Using strategy: ', this.strategy.name);
   }
 
@@ -35,7 +34,7 @@ export class CommunicatorService implements ICommunicatorService {
   }
 
   doRequestNative(operation: any, HTTP?: any) {
-    return this.strategy.doRequestRouter(operation, HTTP);
+    return this.strategy.doRequestNative(operation, HTTP);
   }
 
 }
