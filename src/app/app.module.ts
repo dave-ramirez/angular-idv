@@ -6,6 +6,7 @@ import { VoxelLoggerModule } from '@voxel/logger';
 import { registerLocaleData } from '@angular/common';
 import { SegmentTypes, VoxelConfigModule, VoxelLinkModule } from '@voxel/mobile';
 import { NativeAnalyticsObject, NativeObject, VoxelNativeCommunicationModule } from '@voxel/native-communication';
+import { CommunicatorModule } from './shared/communicator/communicator.module';
 
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
@@ -36,6 +37,7 @@ registerLocaleData(localePt, 'pt');
     VoxelLinkModule,
     VoxelNativeCommunicationModule,
     SharedModule,
+    CommunicatorModule
   ],
   providers: [
     {
