@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ICommunicatorService } from './communicator';
-import { NativeCommunicatorService } from './native/voxel-native.communicator.service';
+import { NativeCommunicatorService } from './native/native.communicator.service';
 
 @Injectable()
 export class CommunicatorService implements ICommunicatorService {
