@@ -1,10 +1,9 @@
 import { TestBed } from '@angular/core/testing';
-import { VoxelRouterService, AuthTokenService } from '@voxel/router';
 import { HttpHandler, HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
-import { VoxelNativeCommunicationService } from '@voxel/native-communication';
+import { NativeCommunicationService } from '@quickweb/native-communication';
 
-jest.mock('@voxel/native-communication');
+jest.mock('@quickweb/native-communication');
 const nativeSubject = new Subject();
 const native: any = {
   routerRequest: jest.fn(),
@@ -15,9 +14,7 @@ describe('Router implementations tests', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        VoxelNativeCommunicationService,
-        AuthTokenService,
-        VoxelRouterService,
+        NativeCommunicationService,
         HttpHandler,
         HttpClient,
       ],

@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CommunicatorService } from './communicator.service';
-import { VoxelNativeCommunicatorService } from './voxel/voxel-native.communicator.service';
-import { VoxelRouterCommunicatorService } from './voxel/voxel-router.communicator.service';
+import { NativeCommunicatorService } from './native/native.communicator.service';
 
 @NgModule({
   declarations: [],
@@ -12,8 +11,7 @@ import { VoxelRouterCommunicatorService } from './voxel/voxel-router.communicato
   exports: [],
   providers: [
     CommunicatorService,
-    VoxelNativeCommunicatorService,
-    VoxelRouterCommunicatorService
+    NativeCommunicatorService,
   ],
 })
 export class CommunicatorModule {}

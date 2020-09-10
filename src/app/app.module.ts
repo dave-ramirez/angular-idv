@@ -2,10 +2,10 @@ import '@angular/common/locales/pt';
 
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { VoxelLoggerModule } from '@voxel/logger';
+import { LoggerModule } from '@quickweb/logger';
 import { registerLocaleData } from '@angular/common';
 import { SegmentTypes, VoxelConfigModule, VoxelLinkModule } from '@voxel/mobile';
-import { NativeAnalyticsObject, NativeObject, VoxelNativeCommunicationModule } from '@voxel/native-communication';
+import { NativeAnalyticsObject, NativeObject, NativeCommunicationModule } from '@quickweb/native-communication';
 import { CommunicatorModule } from './shared/communicator/communicator.module';
 
 import { environment } from '../environments/environment';
@@ -30,12 +30,12 @@ registerLocaleData(localePt, 'pt');
       production: environment.production,
       segment: SegmentTypes.Varejo,
     }),
-    VoxelLoggerModule.forRoot({
+    LoggerModule.forRoot({
       production: environment.production,
       applicationName: 'your-app-name',
     }),
     VoxelLinkModule,
-    VoxelNativeCommunicationModule,
+    NativeCommunicationModule,
     SharedModule,
     CommunicatorModule
   ],

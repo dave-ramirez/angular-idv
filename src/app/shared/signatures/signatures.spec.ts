@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 import { Subject } from 'rxjs';
-import { VoxelNativeCommunicationService } from '@voxel/native-communication';
+import { NativeCommunicationService } from '@quickweb/native-communication';
 import { Signature } from './signatures';
 
-jest.mock('@voxel/native-communication');
+jest.mock('@quickweb/native-communication');
 const nativeSubject = new Subject();
 const native: any = {
   routerRequest: jest.fn(),
@@ -15,7 +15,7 @@ describe('Signature', () => {
     TestBed.configureTestingModule({
       providers: [
         {
-          provide: VoxelNativeCommunicationService,
+          provide: NativeCommunicationService,
           useValue: native as any,
         },
       ],

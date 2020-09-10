@@ -25,14 +25,12 @@ Se debe editar el archivo y se debe agregar los siguientes registry´s y desacti
 6. Una vez terminado de agregar las dependencias `Voxel` ejecutar el comando `package.json` con el registry apuntando a `https://depdes.artifactory.prod.cloud.ihf/artifactory/api/npm/npm-devel`.
 
 ## Interface para distinguir plataformas
-`ICommunicator` es una interface para distinguir las plataformas de las cuales ingresa la peticion `Native` o `Router`, lo cual se utiliza con un servicio llamado `CommunicatorService` del tipo `@Injectable()` que se ejecuta cuando se carga el proyecto.
+`ICommunicator` es una interface para distinguir las plataformas de las cuales ingresa la peticion `Native`, lo cual se utiliza con un servicio llamado `CommunicatorService` del tipo `@Injectable()` que se ejecuta cuando se carga el proyecto.
 
   ## ICommunicator 
 ```ts
   export interface ICommunicatorService {
     name: string;
-
-    doRequestRouter(operation: string, body?: any): any; //<-- Peticion via Router
 
     doRequestNative(operation: INativeRequest, HTTP?: any): any; //<-- Peticion via Native
 
@@ -41,54 +39,11 @@ Se debe editar el archivo y se debe agregar los siguientes registry´s y desacti
  ## CommunicatorService
 ```ts
   constructor(
-    private voxelRouter: VoxelRouterCommunicatorService,
     private voxelNative: VoxelNativeCommunicatorService
   ) {
-    this.strategy = (window as any).native ? voxelNative : this.voxelRouter; //<-- Dependiendo del window settea el Router o Native
-    console.log('Using strategy: ', this.strategy.name);
+    this.strategy = (window as any).native;
   }
  ```
-
-## Metodo para llamada a servicios Routers
-Para este ejemplo se asume que ya se realizo la peticion Pre-Login y ya se haya almacena el Token en Local/Session Storage.
-
-  ## Paso 1:
-El primer paso es obtener el Token para poder hacer las peticiones via Router, para eso se crea una clase de tipo `@Injectable()` por ej:
-```ts
-  export class TokenService {
-
-    getToken(token: any) {
-      return window.localStorage.getItem(token);
-    }
-    
-  }
-``` 
-  ## Paso 2:
-Desde el `voxel-router.communicator.service` se realiza el request correspondiente al Router
-
-```ts
-  getOp(target: string): string {
-    const opMap = JSON.parse(this.tokenService.getToken('ops') as string);
-    return opMap ? opMap[target] : '';
-  }
-
-  doRequest(operation: string, body: any = {}): Observable<any> {
-    return this.routerVoxel.request(this.getOp(operation), body)
-    .pipe(
-      map((res: any) => res.data),
-    );
-  }
-```
-  ## Paso 3:
-Desde el componente se llama al `communicator.service` lo cual tiene integrado el `ICommunicator` que distingue las peticiones Nativas y del Router
-
-```ts
-   metodo(operation: any, body: any = {}): Observable<any> {
-      return this.communicator.doRequest(operation: string, body: any = {});
-    }
-```
-
-
 
 ## Metodo para llamada a servicios Native
 
