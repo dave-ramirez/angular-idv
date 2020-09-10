@@ -10,10 +10,8 @@ import {
   VoxelInputModule,
   VoxelLoadingModule,
   VoxelRadioButtonModule,
-  VoxelWarningModule,
 } from '@voxel/mobile';
-import { VoxelRouterModule } from '@voxel/router';
-import { VoxelNativeCommunicationModule } from '@voxel/native-communication';
+import { NativeCommunicationModule } from '@quickweb/native-communication';
 
 const baseModules = [
   CommonModule,
@@ -22,7 +20,6 @@ const baseModules = [
 ];
 
 const voxelModules = [
-  VoxelWarningModule,
   VoxelHeaderModule,
   VoxelInputModule,
   VoxelButtonModule,
@@ -30,8 +27,7 @@ const voxelModules = [
   VoxelGoToModule,
   VoxelCardModule,
   VoxelRadioButtonModule,
-  VoxelNativeCommunicationModule,
-  VoxelRouterModule
+  NativeCommunicationModule
 ];
 
 @NgModule({

@@ -1,7 +1,7 @@
 import {
     INativeRequest,
     NativeRouterMethod,
-  } from '@voxel/native-communication';
+  } from '@quickweb/native-communication';
   
   export class Signature implements INativeRequest {
   
