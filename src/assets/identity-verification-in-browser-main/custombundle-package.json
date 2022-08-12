@@ -1,0 +1,20 @@
+{
+  "name": "@microblink/idv-in-browser-sdk",
+  "version": "1.1.0",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.js",
+  "types": "dist/types/index.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "files": [
+    "dist/",
+    "loader/",
+    "src/",
+    "resources/"
+  ],
+  "dependencies": {
+    "@stencil/core": "^2.8.0",
+    "axios": "^0.24.0",
+    "base64-arraybuffer": "^1.0.1",
+    "@microblink/blinkid-in-browser-sdk": "5.15.2"
+  }
+}

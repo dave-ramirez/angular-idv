@@ -1,0 +1,13 @@
+blinkid-in-browser {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+}
+
+blinkid-in-browser.not-visible {
+  visibility: hidden;
+}
+
+blinkid-in-browser.not-displayed{
+  display: none;
+}

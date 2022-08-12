@@ -1,0 +1,49 @@
+
+:host {
+  --size-large: 60px;
+  --size-medium: 50px;
+  --size-small: 40px;
+}
+
+.icon-fail-circle, .icon-fail-circle.large {
+  width: var(--size-large);
+  height: var(--size-large);
+}
+
+.icon-fail-circle.medium {
+  width: var(--size-medium);
+  height: var(--size-medium);
+}
+
+.icon-fail-circle.small {
+  width: var(--size-small);
+  height: var(--size-small);
+}
+
+/* desktop (lg, xl, xxl) */
+@media only screen and (min-width: 992px) {
+}
+/* tablet (sm, md) */
+@media only screen and (min-width: 576px) and (max-width: 991px) {
+  .icon-fail-circle, .icon-fail-circle.large {
+    width: var(--size-medium);
+    height: var(--size-medium);
+  }
+
+  .icon-fail-circle.medium {
+    width: var(--size-small);
+    height: var(--size-small);
+  }
+}
+/* mobile (xs) */
+@media only screen and (max-width: 575px) {
+  .icon-fail-circle, .icon-fail-circle.large {
+    width: var(--size-small);
+    height: var(--size-small);
+  }
+
+  .icon-fail-circle.medium {
+    width: var(--size-small);
+    height: var(--size-small);
+  }
+}

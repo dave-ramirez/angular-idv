@@ -1,0 +1,100 @@
+@import url('../../global.css');
+
+:host {
+  display: inline-block;
+
+  --start-button-width: 100px;
+  --default-padding-left-right: 16px;
+}
+
+.idv-in-browser {
+  position: relative;
+
+  display: inline-block;
+  box-sizing: border-box;
+
+  min-width: 290px;
+  width: 360px;
+  max-width: 100%;
+  height: auto;
+
+  padding: 12px 16px;
+  
+  background-color: var(--background-color-primary);
+  border: 1px solid var(--border-color-primary);
+  border-radius: 5px;
+}
+
+.idv-in-browser .content {
+  position: relative;
+
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+
+  box-sizing: border-box;
+
+  /* Padding right for button */
+  padding-right: calc(var(--start-button-width) + var(--default-padding-left-right));
+
+  border-radius: 5px;
+}
+
+.idv-in-browser .content .greetings {
+  display: flex;
+  align-items: center;
+
+  font-family: var(--font-family-default);
+  font-style: var(--font-style-default);
+  font-weight: normal;
+  font-size: var(--font-size-smaller);
+  line-height: var(--line-height-small);
+  color: black;
+}
+
+.idv-in-browser .content button.start-button {
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  min-width: 50px;
+}
+
+p.verify-action {
+  margin: 32px 0px 21px;
+  text-align: center;
+}
+
+p.verify-action button {
+  width: 160px;
+}
+
+/* Feedback Layer */
+
+.idv-in-browser .feedback-overlay {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+
+  background-color: var(--background-color-primary);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  font-family: var(--font-family-default);
+  font-weight: normal;
+  font-size: var(--font-size-smaller);
+  font-style: var(--font-style-default);
+  line-height: var(--line-height-medium);
+  color: var(--font-color-primary);
+
+  border-radius: 5px;
+}

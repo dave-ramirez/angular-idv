@@ -1,17 +1,9 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-import { analyticsObjectMock, MockCompareStrategy, sdkObjectMock } from '@quickweb/native-communication';
-
-import { mockData } from '../router-mock';
-
-sdkObjectMock.mockData = mockData;
-sdkObjectMock.mockCompareStrategy = MockCompareStrategy.Intersection;
 
 export const environment = {
-  production: false,
-  sdkObjectMock,
-  analyticsObjectMock,
+  production: false
 };
 
 /*

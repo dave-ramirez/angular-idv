@@ -1,0 +1,30 @@
+:host {
+  --top: 20px;
+  --right: 16px;
+}
+
+.button-close-top-right {
+  position: absolute;
+  top: var(--top);
+  right: var(--right);
+
+  cursor: pointer;
+}
+
+/* desktop (lg, xl, xxl) */
+@media only screen and (min-width: 992px) {
+}
+/* tablet (sm, md) */
+@media only screen and (min-width: 576px) and (max-width: 991px) {
+  :host {
+    --top: 16px;
+    --right: 16px;
+  }
+}
+/* mobile (xs) */
+@media only screen and (max-width: 575px) {
+  :host {
+    --top: 12px;
+    --right: 16px;
+  }
+}

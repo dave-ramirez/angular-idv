@@ -1,0 +1,33 @@
+@import '../../global.css';
+
+.processing-layer {
+  position: fixed;
+  z-index: var(--z-index-fixed-div-layer-5);
+  left: 0px;
+  top: 0px;
+  width: 100vw;
+  height: 100vh;
+  height: -webkit-fill-available;
+  background-color: var(--background-color-primary);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.processing-layer p {
+  margin: 0px;
+}
+
+.processing-layer p.icon {
+  margin-bottom: var(--margin-default);
+}
+
+.processing-layer p.text {
+  font-family: var(--font-family-default);
+  font-style: var(--font-style-default);
+  font-weight: normal;
+  font-size: var(--font-size-medium);
+  line-height: var(--line-height-large);
+  color: var(--font-color-secondary);
+}

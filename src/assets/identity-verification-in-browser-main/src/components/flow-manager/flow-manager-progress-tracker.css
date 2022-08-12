@@ -1,0 +1,204 @@
+@import url('../../global.css');
+
+:host {
+  --component-height: var(--progress-tracker-height);
+  --icon-size: 24px;
+  --arrow-div-size: calc(var(--component-height) / 2 / 0.8191520443);
+}
+
+.flow-manager-progress-tracker {
+  position: fixed !important;
+  left: 0px;
+  bottom: 0px;
+  z-index: var(--z-index-max);
+
+  width: 100vw;
+  height: var(--component-height);
+
+  display: flex;
+  flex-direction: row;
+
+  visibility: hidden;
+  
+  background-color: var(--background-color-primary);
+}
+
+.flow-manager-progress-tracker.show {
+  visibility: visible;
+}
+
+/* Checkpoint */
+
+.flow-manager-progress-tracker .checkpoint {
+  position: relative;
+  flex: 1;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkpoint .arrow-part {
+  position: absolute;
+  z-index: 1;
+  top: 0px;
+  right: calc( -1 * var(--arrow-div-size));
+  height: var(--arrow-div-size);
+  width: var(--arrow-div-size);
+
+  transform-origin: top left;
+  transform: rotate(45deg) skew(10deg, 10deg);
+  -webkit-transform: rotate(45deg) skew(10deg, 10deg);
+}
+
+.checkpoint .content {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.checkpoint .content div.icon-container {
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -14px;
+  margin-right: 16px;
+}
+
+.checkpoint .content div.icon-container div.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: var(--icon-size);
+  height: var(--icon-size);
+  border-radius: 50%;
+
+  font-family: var(--font-family-default);
+  font-style: var(--font-style-default);
+  font-weight: bold;
+  font-size: var(--font-size-smaller);
+  line-height: var(--line-height-small);
+  color: white;
+
+  margin: 0px auto 5px auto;
+}
+
+.checkpoint .content div.info {
+  display: inline-block;
+}
+
+.checkpoint .content div.info p.text {
+  text-align: left;
+  font-family: var(--font-family-default);
+  font-style: var(--font-style-default);
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-medium);
+  margin: 0px;
+  /* Can change: */
+  font-weight: bold;
+  color: var(--font-color-primary);
+}
+
+.checkpoint .content div.info p.sub-text {
+  text-align: left;
+  font-family: var(--font-family-default);
+  font-style: var(--font-style-default);
+  font-weight: normal;
+  font-size: var(--font-size-smaller);
+  line-height: var(--line-height-small);
+  color: var(--font-color-secondary);
+  margin: 0px;
+}
+
+.checkpoint .content div.icon-container img.icon {
+  width: var(--icon-size);
+  height: auto;
+
+  margin: 0px auto 5px auto;
+}
+
+/* Checkpoint Current */
+
+.checkpoint.current {
+  background-color: #E7F0FF;
+  border-top: 1px #DCEAFF solid;
+  border-bottom: 1px #DCEAFF solid;
+}
+
+.checkpoint.current .arrow-part {
+  background-color: #E7F0FF;
+  border-top: 1px #DCEAFF solid;
+  border-right: 1px #DCEAFF solid;
+}
+
+.checkpoint.current .content div.info p.text {
+  font-weight: bold;
+  color: var(--font-color-primary);
+}
+
+.checkpoint.current .content div.icon-container div.icon {
+  background-color: var(--color-primary);
+}
+
+/* Checkpoint Future */
+
+.checkpoint.future {
+  background-color: #F9FAFB;
+  border-top: 1px #D7E5EE solid;
+  border-bottom: 1px #D7E5EE solid;
+}
+
+.checkpoint.future .arrow-part {
+  background-color: #F9FAFB;
+  border-top: 1px #D7E5EE solid;
+  border-right: 1px #D7E5EE solid;
+}
+
+.checkpoint.future .content div.info p.text {
+  font-weight: normal;
+  color: var(--font-color-ternary);
+}
+
+.checkpoint.future .content div.icon-container div.icon {
+  color: var(--color-primary);
+  background-color: #DCEAFF;
+}
+
+/* Checkpoint Past */
+
+.checkpoint.past {
+  background-color: #F9FAFB;
+  border-top: 1px solid #D1FAE5;
+  border-bottom: 1px solid #D1FAE5;
+}
+
+.checkpoint.past .arrow-part {
+  background-color: #F9FAFB;
+  border-top: 1px solid #D1FAE5;
+  border-right: 1px solid #D1FAE5;
+}
+
+.checkpoint.past .content div.info p.text {
+  font-weight: normal;
+  color: var(--font-color-primary);
+}
+
+/* desktop (lg, xl, xxl) */
+@media only screen and (min-width: 992px) {
+}
+/* tablet (sm, md) */
+@media only screen and (min-width: 576px) and (max-width: 991px) {
+  .checkpoint .content div.icon-container {
+    margin-top: 0px;
+    margin-right: 8px;
+  }
+}
+/* mobile (xs) */
+@media only screen and (max-width: 575px) {
+  .checkpoint .content div.icon-container {
+    margin-top: -2px;
+    margin-right: 8px;
+  }
+}

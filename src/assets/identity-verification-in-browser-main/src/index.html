@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Identity Verification</title>
+    <script type="module" src="/build/idv-in-browser-sdk-ui.esm.js"></script>
+    <script nomodule src="/build/idv-in-browser-sdk-ui.js"></script>
+    <!-- secret -->
+    <script src="/secret.js"></script>
+    <style>
+      body {
+        box-sizing: border-box;
+        padding: 24px;
+        display: flex;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <idv-in-browser id="idv"></idv-in-browser>
+
+    <script>
+      var idv = document.getElementById('idv');
+      idv.config = {
+        resourcesDirectoryPath: RESOURCES_DIRECTORY_PATH,
+        license: LICENSE,
+        identityVerificationServerUrl: IDENTITY_VERIFICATION_SERVER_URL,
+        docscanSkipUnsupportedBack: true,
+        devMode: true,
+      }
+      idv.addEventListener('result', (customEvent) => {
+        console.log('idv result:', customEvent.detail);
+      });
+      idv.addEventListener('session-initialized', (customEvent) => {
+        console.log('idv sessionId:', customEvent.detail);
+      });
+    </script>
+  </body>
+</html>

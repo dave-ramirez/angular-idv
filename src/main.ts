@@ -4,12 +4,10 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
-/**
- * Para webviews no iOS, existe a necessidade de iniciar a execução da
- * aplicação Angular após o evento "deviceReady", emitido pelo SDK Nativo.
- * Dessa forma, é garantida a disponibilidade do objeto native no
- * escopo global da webview, permitindo a execução de funções do SDK.
- */
+//import { defineCustomElements } from '@microblink/idv-in-browser-sdk/loader';
+import { defineCustomElements } from '../node_modules/@microblink/blinkid-in-browser-sdk/ui/loader';
+
+
 if (window.navigator.userAgent.toLowerCase().indexOf('iphone') > 0 && environment.production) {
   const deviceReady = () => {
     bootstrapAngular();
@@ -25,6 +23,7 @@ function bootstrapAngular() {
     enableProdMode();
   }
 
+  defineCustomElements();
   platformBrowserDynamic().bootstrapModule(AppModule)
     .catch(err => console.error(err));
 }

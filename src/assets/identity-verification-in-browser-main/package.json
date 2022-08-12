@@ -1,0 +1,46 @@
+{
+  "name": "@microblink/idv-in-browser-sdk",
+  "version": "1.1.0",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.js",
+  "types": "dist/types/index.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "files": [
+    "dist/",
+    "loader/",
+    "src/",
+    "resources/"
+  ],
+  "scripts": {
+    "start": "stencil build --dev --watch --serve",
+    "prebuild": "rm -rf dist && rm -rf loader && rm -rf www && rm -rf resources",
+    "build": "stencil build --docs",
+    "build-post-action-1": "echo \"import './esm/idv-in-browser-sdk-ui.js';\" | cat - dist/index.js > temp.js && mv temp.js dist/index.js &&  echo \"require('./cjs/idv-in-browser-sdk-ui.cjs.js');\" | cat - dist/index.cjs.js > temp.js && mv temp.js dist/index.cjs.js",
+    "build-post-action-2": "mkdir resources/idv && cp -r dist/* resources/idv/",
+    "postbuild": "npm run build-post-action-1 && npm run build-post-action-2 && cp dist/idv-in-browser-sdk-ui/idv-in-browser-sdk-ui.css resources/",
+    "precustombundle": "rm -rf custom_bundle",
+    "custombundle": "npm run build && mkdir temp && cp -r dist temp/ && cp -r loader temp/ && cp -r resources temp/ && mkdir temp/src && cp -r src/dependencies temp/src/ && cp custombundle-package.json temp/ && mv temp/custombundle-package.json temp/package.json && cp README.md temp/ && cp CHANGELOG.md temp/ && mv temp/ custom_bundle/",
+    "precustompack": "npm run custombundle",
+    "custompack": "npm pack ./custom_bundle/",
+    "generate": "stencil generate",
+    "clean": "rm -rf custom_bundle/ && rm -rf dist/ && rm -rf loader/ && rm -rf resources/ && rm -rf www/"
+  },
+  "dependencies": {
+    "@microblink/blinkid-in-browser-sdk": "5.15.2",
+    "@stencil/core": "^2.8.0",
+    "axios": "^0.24.0",
+    "base64-arraybuffer": "^1.0.1"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^20.0.0",
+    "@types/css-font-loading-module": "0.0.6",
+    "@types/jest": "^26.0.24",
+    "@typescript-eslint/eslint-plugin": "^4.29.2",
+    "@typescript-eslint/parser": "^4.29.2",
+    "eslint": "^7.32.0",
+    "eslint-plugin-react": "^7.24.0",
+    "jest": "^26.6.3",
+    "jest-cli": "^26.6.3",
+    "puppeteer": "^10.0.0"
+  }
+}

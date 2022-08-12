@@ -1,0 +1,51 @@
+@import url('../../global.css');
+
+.in-progress-fullscreen-background {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100vw;
+  height: 100vh;
+  height: -webkit-fill-available;
+  z-index: var(--z-index-fixed-div-layer-2);
+  background-color: var(--background-color-primary);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Loby */
+
+.facetec-liveness-lobby {
+  width: auto;
+  height: auto;
+}
+
+.facetec-liveness-lobby .option{
+  width: 170px;
+  height: auto;
+  flex: 1;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0px var(--padding-default);
+}
+
+.facetec-liveness-lobby .options p.button {
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.facetec-liveness-lobby .options p.text {
+  margin-bottom: 0px;
+  text-align: center;
+  font-family: var(--font-family-default);
+  font-style: var(--font-style-default);
+  font-weight: normal;
+  font-size: var(--font-size-smaller);
+  line-height: var(--line-height-small);
+  color: var(--font-color-secondary);
+}

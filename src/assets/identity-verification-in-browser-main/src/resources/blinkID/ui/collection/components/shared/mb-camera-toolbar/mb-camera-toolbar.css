@@ -1,0 +1,87 @@
+/**
+ * Copyright (c) Microblink Ltd. All rights reserved.
+ */
+/**
+ * Copyright (c) Microblink Ltd. All rights reserved.
+ *
+ * SASS variables, not customizable via CSS variables
+ */
+/**
+ * Camera experiences
+ */
+:host {
+  width: 100%;
+  padding-top: 16px;
+  background-color: rgba(60, 60, 67, 0.7);
+  -webkit-backdrop-filter: blur(var(--mb-blur-filter));
+  backdrop-filter: blur(var(--mb-blur-filter));
+}
+:host header {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 16px;
+}
+:host header > * {
+  display: block;
+  flex-grow: 1;
+}
+:host .camera-selection-wrapper {
+  width: calc(100% - 3em);
+}
+:host mb-camera-selection {
+  display: none;
+}
+:host mb-camera-selection.visible {
+  display: block;
+}
+
+@media only screen and (min-width: 768px) {
+  :host {
+    padding-top: 0;
+  }
+  :host header {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+@media only screen and (min-width: 1280px) {
+  :host header {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+/**
+ * Toolbar buttons
+ */
+:host .toolbar-button {
+  width: calc(var(--mb-font-size) * 1.5);
+  height: calc(var(--mb-font-size) * 1.5);
+  padding: 8px 0;
+  cursor: pointer;
+}
+:host .toolbar-button svg {
+  width: calc(var(--mb-font-size) * 1.5);
+  height: calc(var(--mb-font-size) * 1.5);
+  border: 1px solid transparent;
+  border-radius: var(--mb-toolbar-border-radius);
+  filter: drop-shadow(0px 1px 4px rgba(0, 0, 0, 0.4));
+}
+:host .toolbar-button:hover svg {
+  background-color: rgba(60, 60, 67, 0.3);
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+}
+:host .toolbar-button:focus svg, :host .toolbar-button:active svg {
+  border-color: var(--mb-toolbar-border-color);
+}
+:host .flip-button {
+  transform-style: preserve-3d;
+  -ms-perspective: 600px;
+  -o-perspective: 600px;
+  perspective: 600px;
+  transition: 800ms;
+}
+:host .flip-button.flipped {
+  transform: rotateY(180deg);
+}

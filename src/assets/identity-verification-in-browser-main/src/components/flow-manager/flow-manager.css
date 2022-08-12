@@ -1,0 +1,339 @@
+@import url('../../global.css');
+
+.flow-manager {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100vw;
+  height: 100vh;
+  height: -webkit-fill-available;
+
+  z-index: var(--z-index-fixed-div-layer-1);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: center;
+
+  visibility: hidden;
+
+  background-color: var(--background-color-primary);
+
+  padding-bottom: var(--fullscreen-mandatory-padding-bottom);
+}
+
+.flow-manager.show {
+  visibility: visible;
+}
+
+/* Flow Manager Info */
+
+.flow-manager-info {
+  width: 100%;
+  height: auto;
+  margin-bottom: 37px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flow-manager-info p {
+  text-align: center;
+  margin: 0px;
+}
+
+.flow-manager-info .general {
+  width: 100%;
+  height: auto;
+  background: linear-gradient(281.23deg, #0062F2 -32.28%, #C6DDFF 31.6%, #F1FBCE 115.24%);
+
+  padding: 40px var(--padding-default) 55px var(--padding-default);
+  margin-bottom: 80px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flow-manager-info .general img {
+  width: auto;
+  height: 210px;
+  margin-left: 70px;
+}
+
+.flow-manager-info .general .content {
+  width: 400px;
+}
+
+.flow-manager-info .general .content p {
+  text-align: left;
+}
+
+.flow-manager-info .general .content p.head {
+  font-family: var(--font-family-default);
+  font-style: var(--font-style-default);
+  font-weight: normal;
+  font-size: var(--font-size-smaller);
+  line-height: var(--line-height-small);
+  color: var(--color-primary);
+  margin-bottom: 8px;
+}
+
+.flow-manager-info .general .content p.title {
+  font-family: var(--font-family-default);
+  font-style: var(--font-style-default);
+  font-weight: bold;
+  font-size: var(--font-size-extralarge);
+  line-height: var(--line-height-extralarge);
+  color: var(--font-color-primary);
+  margin-bottom: 18px;
+}
+
+.flow-manager-info .general .content p.subtitle {
+  font-family: var(--font-family-default);
+  font-style: var(--font-style-default);
+  font-weight: normal;
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-medium);
+  color: var(--font-color-secondary);
+}
+
+.flow-manager-info hr {
+  border: 1px solid #CED4DA;
+  margin-top: 90px;
+  margin-bottom: 70px;
+}
+
+.flow-manager-info .step {
+  width: 350px;
+  max-width: 100%;
+  height: auto;
+  padding: 0px var(--padding-default);
+}
+
+.flow-manager-info .step p.title {
+  font-family: var(--font-family-default);
+  font-style: var(--font-style-default);
+  font-weight: 600;
+  font-size: var(--font-size-medium);
+  line-height: var(--line-height-large);
+  color: var(--font-color-primary);
+  margin-bottom: 8px;
+}
+
+.flow-manager-info .step p.subtitle {
+  font-family: var(--font-family-default);
+  font-style: var(--font-style-default);
+  font-weight: normal;
+  font-size: var(--font-size-smaller);
+  line-height: var(--line-height-small);
+  color: var(--font-color-secondary);
+}
+
+/* Verification Result Layer */
+
+.verification-result-layer {
+  position: fixed;
+  z-index: var(--z-index-fixed-div-layer-2);
+  left: 0px;
+  top: 0px;
+  width: 100vw;
+  height: 100vh;
+  height: -webkit-fill-available;
+
+  visibility: hidden;
+
+  background-color: var(--background-color-primary);
+}
+
+.verification-result-layer .visible {
+  visibility: visible;
+}
+
+.verification-result-layer .content {
+  position: absolute;
+  top: 150px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  max-width: 100%;
+  padding: 0px var(--padding-default);
+}
+
+.verification-result-layer .content p {
+  text-align: center;
+  margin: 0px;
+}
+
+.verification-result-layer .content p.image {
+  margin-bottom: var(--margin-default);
+}
+
+.verification-result-layer .content p.image img {
+  width: 100px;
+  height: auto;
+  border-radius: 20px;
+  border-style: solid;
+  border-width: 3px;
+  border-color: lightgray
+}
+
+.verification-result-layer .content p.image img.verified {
+  border-color: #10B981;
+}
+
+.verification-result-layer .content p.image img.needs-review {
+  border-color: #DFFF00;
+}
+
+.verification-result-layer .content p.result {
+  font-family: var(--font-family-default);
+  font-style: var(--font-style-default);
+  font-weight: 600;
+  font-size: var(--font-size-large);
+  line-height: var(--line-height-large);
+  letter-spacing: -0.01em;
+  color: var(--font-color-primary);
+  margin-bottom: 12px;
+}
+
+.verification-result-layer .content p.guidance {
+  font-family: var(--font-family-default);
+  font-style: var(--font-style-default);
+  font-weight: normal;
+  font-size: var(--font-size-smaller);
+  line-height: var(--line-height-small);
+  color: var(--font-color-secondary);
+  margin-bottom: 48px;
+}
+
+.verification-result-layer .content p.buttons button {
+  width: 250px;
+  max-width: 100%;
+}
+
+/* Error Layer */
+
+.error-layer {
+  position: fixed;
+  z-index: var(--z-index-fixed-div-layer-4);
+  left: 0px;
+  top: 0px;
+  width: 100vw;
+  height: 100vh;
+  height: -webkit-fill-available;
+
+  visibility: hidden;
+
+  background-color: var(--background-color-primary);
+}
+
+.error-layer .visible {
+  visibility: visible;
+}
+
+.error-layer .content {
+  position: absolute;
+  top: 128px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 350px;
+  max-width: 100%;
+  padding: var(--padding-default);
+}
+
+.error-layer .content p {
+  text-align: center;
+  margin: 0px;
+}
+
+.error-layer .content p.icon{
+  margin-bottom: 24px;
+}
+
+.error-layer .content p.message {
+  margin-bottom: 48px;
+
+  font-family: var(--font-family-default);
+  font-style: var(--font-style-default);
+  font-weight: normal;
+  font-size: var(--font-size-medium);
+  line-height: var(--line-height-large);
+  color: var(--font-color-primary);
+}
+
+/* Watermark */
+
+.flow-manager .watermark-bar-bottom {
+  position: absolute;
+  bottom: var(--progress-tracker-height);
+  width: 100%;
+  height: var(--watermark-height);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: transparent;
+}
+
+.flow-manager .watermark-bar-bottom p {
+  text-align: center;
+  font-family: var(--font-family-default);
+  font-style: var(--font-style-default);
+  font-weight: normal;
+  font-size: var(--font-size-smaller);
+  line-height: var(--line-height-small);
+  color: var(--font-color-secondary);
+  margin: 0px;
+}
+
+/* desktop (lg, xl, xxl) */
+@media only screen and (min-width: 992px) {
+}
+/* tablet (sm, md) */
+@media only screen and (min-width: 576px) and (max-width: 991px) {
+  .verification-result-layer .content p.buttons button {
+    width: 200px;
+  }
+  
+  .verification-result-layer .content p.guidance {
+    margin-bottom: 40px;
+  }
+
+  /* Error Layer */
+
+  .error-layer .content p.icon{
+    margin-bottom: 20px;
+  }
+
+  .error-layer .content p.message {
+    margin-bottom: 40px;
+  }
+}
+/* mobile (xs) */
+@media only screen and (max-width: 575px) {
+  .flow-manager-info .general {
+    margin-bottom: 24px;
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+
+  .verification-result-layer .content p.buttons button {
+    width: 150px;
+  }
+  
+  .verification-result-layer .content p.guidance {
+    margin-bottom: 30px;
+  }
+
+  /* Error Layer */
+
+  .error-layer .content p.icon{
+    margin-bottom: 10px;
+  }
+
+  .error-layer .content p.message {
+    margin-bottom: 30px;
+  }
+}

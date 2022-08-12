@@ -3,43 +3,47 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "app": {
+    "ngaot": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "app",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/app",
+            "aot": true,
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
+            "preserveSymlinks": true,
+            "showCircularDependencies": false,
+            "polyfills": "src/polyfills.ts",
+            "allowedCommonJsDependencies": [
+              "rxjs",
+              "ng2-image-compress"
+            ],
             "assets": [
+              "src/assets",
               "src/favicon.ico",
-              "src/assets"
+              {
+                "glob": "**/*",
+                "input": "node_modules/@microblink/idv-in-browser-sdk/src/resources",
+                "output": "/idv-resources/"
+              }
             ],
             "styles": [
-              "./node_modules/@voxel/mobile/styles/fonts.css",
-              "./node_modules/@voxel/mobile/styles/main.css",
+              "node_modules/reset-css/reset.css",
               "src/styles.scss"
             ],
-            "scripts": [],
-            "es5BrowserSupport": true
+            "scripts": []
           },
           "configurations": {
             "production": {
-              "fileReplacements": [
+              "budgets": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ],
               "optimization": true,
@@ -51,11 +55,10 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "budgets": [
+              "fileReplacements": [
                 {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
                 }
               ]
             }
@@ -64,19 +67,39 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "app:build",
-            "proxyConfig": "proxy.conf.json"
+            "browserTarget": "ngaot:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "app:build:production"
+              "browserTarget": "ngaot:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "app:build"
+            "browserTarget": "ngaot:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "karmaConfig": "karma.conf.js",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.spec.json",
+            "codeCoverageExclude": [
+              "**/*.mock.ts"
+            ],
+            "scripts": [],
+            "styles": [
+              "node_modules/reset-css/reset.css",
+              "src/styles.scss"
+            ],
+            "assets": [
+              "src/assets",
+              "src/favicon.ico"
+            ]
           }
         },
         "lint": {
@@ -92,7 +115,21 @@
           }
         }
       }
+    },
+    "ngaot-e2e": {
+      "root": "e2e",
+      "sourceRoot": "e2e",
+      "projectType": "application"
     }
   },
-  "defaultProject": "app"
+  "defaultProject": "ngaot",
+  "schematics": {
+    "@schematics/angular:component": {
+      "prefix": "voxel",
+      "style": "scss"
+    },
+    "@schematics/angular:directive": {
+      "prefix": "voxel"
+    }
+  }
 }

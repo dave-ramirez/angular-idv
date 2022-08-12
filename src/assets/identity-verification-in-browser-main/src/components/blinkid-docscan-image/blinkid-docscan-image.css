@@ -1,0 +1,182 @@
+@import url('../../global.css');
+
+.blinkid-docscan-image {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100vw;
+  height: 100vh;
+  height: -webkit-fill-available;
+  z-index: var(--z-index-fixed-div-layer-3);
+
+  visibility: hidden;
+
+  background-color: var(--background-color-primary);
+
+  padding-bottom: var(--fullscreen-mandatory-padding-bottom);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.blinkid-docscan-image.show {
+  visibility: visible;
+}
+
+.blinkid-docscan-image .content {
+  /* position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); */
+  width: calc(328px + 2 * var(--padding-default));
+  max-width: 100%;
+  height: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: var(--padding-default);
+
+  background-color: var(--background-color-primary);
+}
+
+.content p.title {
+  margin-bottom: 40px;
+  text-align: center;
+  font-family: var(--font-family-default);
+  font-style: var(--font-style-default);
+  font-weight: bold;
+  font-size: var(--font-size-large);
+  line-height: var(--line-height-large);
+  color: var(--font-color-primary)
+}
+
+.content div.inputs {
+  display: inline-flex;
+  direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.content div.inputs div.input {
+  position: relative;
+  display: inline-block;
+  width: 160px;
+  height: auto;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color-secondary);
+  border-radius: 4px;
+  margin: 0px 4px;
+}
+
+.content div.inputs div.input.error {
+  border-color: var(--color-fail-light);
+}
+
+
+.content div.inputs div.input input {
+  position: absolute;
+  visibility: hidden;
+}
+
+.content div.inputs div.input label {
+  margin: 0px;
+  font-family: var(--font-family-default);
+  font-style: var(--font-style-default);
+  font-weight: normal;
+  font-size: var(--font-size-smaller);
+  line-height: var(--line-height-small);
+  color: var(--font-color-secondary);
+}
+
+.content div.inputs div.input p.file {
+  margin: 0px;
+  font-family: var(--font-family-default);
+  font-style: var(--font-style-default);
+  font-weight: normal;
+  font-size: var(--font-size-smaller);
+  line-height: var(--line-height-small);
+  color: #2F4361;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.content div.inputs div.input p.file a.add {
+  text-decoration: none;
+  font-family: var(--font-family-default);
+  font-style: var(--font-style-default);
+  font-weight: normal;
+  font-size: var(--font-size-smaller);
+  line-height: var(--line-height-small);
+  color: #0062F2;
+}
+
+.content div.inputs div.input p.file a.remove {
+  text-decoration: none;
+  float: right;
+  font-family: var(--font-family-default);
+  font-style: var(--font-style-default);
+  font-weight: normal;
+  font-size: var(--font-size-smaller);
+  line-height: var(--line-height-small);
+  color: var(--font-color-secondary);
+}
+
+.content p.error {
+  font-family: var(--font-family-default);
+  font-style: var(--font-style-default);
+  font-weight: normal;
+  font-size: var(--font-size-smaller);
+  line-height: var(--line-height-small);
+  color: var(--color-fail);
+  margin: 0px;
+  margin-top: 10px;
+}
+
+.content p.button {
+  margin: 0px;
+  margin-top: 24px;
+  text-align: center;
+}
+
+.content p.button button {
+  width: 90px;
+}
+
+.content div.inputs div.input .image-select-drag-over-layer {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px dashed #0062F2;
+  background-color: #E7F0FF;
+}
+
+.content div.inputs div.input .image-select-drag-over-layer label {
+  margin: 0px;
+  font-family: var(--font-family-default);
+  font-style: var(--font-style-default);
+  font-weight: normal;
+  font-size: var(--font-size-smaller);
+  line-height: var(--line-height-small);
+  color: #3A89FD;
+}
+
+.content div.inputs div.input .image-select-drag-over-layer p.file {
+  margin: 0px;
+  font-family: var(--font-family-default);
+  font-style: var(--font-style-default);
+  font-weight: normal;
+  font-size: var(--font-size-smaller);
+  line-height: var(--line-height-small);
+  color: #3A89FD;
+}

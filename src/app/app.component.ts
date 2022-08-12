@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { ActivationEnd, Router } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
 
-import { LinksService } from './services/links.service';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,11 +12,9 @@ export class AppComponent {
   title = this.defaultTitle;
   showBackBtn = true;
   icons = [ { icon: 'filtro', a11yLabel: 'filtro' } ];
-  links$ = this.linksService.getLinks();
 
   constructor(
     private router: Router,
-    private linksService: LinksService,
   ) {
     this.router.events.pipe(
       filter(e => e instanceof ActivationEnd),

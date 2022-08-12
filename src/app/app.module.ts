@@ -1,58 +1,32 @@
 import '@angular/common/locales/pt';
-
-import { NgModule, LOCALE_ID } from '@angular/core';
+import { NgModule, LOCALE_ID, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { LoggerModule } from '@quickweb/logger';
 import { registerLocaleData } from '@angular/common';
-import { SegmentTypes, VoxelConfigModule, VoxelLinkModule } from '@voxel/mobile';
-import { NativeAnalyticsObject, NativeObject, NativeCommunicationModule } from '@quickweb/native-communication';
-import { CommunicatorModule } from './shared/communicator/communicator.module';
-
-import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { IndexComponent } from './index/index.component';
-import { SharedModule } from './shared/shared.module';
-
 import localePt from '@angular/common/locales/pt';
+
+import { IdvInBrowserComponent } from './idv-in-browser/idv.component';
+
 
 registerLocaleData(localePt, 'pt');
 
 @NgModule({
   declarations: [
     AppComponent,
-    IndexComponent,
+    IdvInBrowserComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    VoxelConfigModule.forRoot({
-      production: environment.production,
-      segment: SegmentTypes.Varejo,
-    }),
-    LoggerModule.forRoot({
-      production: environment.production,
-      applicationName: 'your-app-name',
-    }),
-    VoxelLinkModule,
-    NativeCommunicationModule,
-    SharedModule,
-    CommunicatorModule
+    AppRoutingModule
   ],
   providers: [
-    {
-      provide: NativeObject,
-      useValue: environment.sdkObjectMock,
-    },
-    {
-      provide: NativeAnalyticsObject,
-      useValue: environment.analyticsObjectMock,
-    },
     {
       provide: LOCALE_ID,
       useValue: 'pt',
     },
   ],
   bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }
